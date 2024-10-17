@@ -4,7 +4,7 @@ document.querySelector(".comprobarUsuario").addEventListener("click", (e) => {
       .split("; ")
       .find((row) => row.startsWith("token="))
       .split("=")[1];
-    fetch("http://127.0.0.1:5000/perfil/1", {
+    fetch("https://deyanger.pythonanywhere.com/perfil/1", {
       method: "POST",
       credentials: "include",
       headers: {

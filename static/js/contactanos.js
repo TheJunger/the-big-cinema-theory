@@ -3,7 +3,7 @@ document.querySelector('#contact-form').addEventListener('submit', (e)=>{
     const formData = new FormData(document.getElementById('contact-form'))
     
 
-    fetch('http://localhost:5000/api/enviar-contacto', {
+    fetch('https://deyanger.pythonanywhere.com/api/enviar-contacto', {
       method: "POST",
       body: formData,
     })

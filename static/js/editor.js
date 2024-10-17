@@ -23,7 +23,7 @@ document.querySelector('#formArticulo').addEventListener('submit', (e)=>{
     console.log(id_articulo)
     const formData = new FormData(document.getElementById('formArticulo'))
 
-    fetch(`http://localhost:5000/api/editar-articulo/${id_articulo}`, {
+    fetch(`https://deyanger.pythonanywhere.com/api/editar-articulo/${id_articulo}`, {
       method: "POST",
       body: formData,
       credentials: "include",

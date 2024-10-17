@@ -1,7 +1,7 @@
 document.querySelector('#loginForm').addEventListener('submit', e =>{
     e.preventDefault()
     const formData = new FormData(document.getElementById('loginForm'))
-    fetch('http://localhost:5000/login', {
+    fetch('https://deyanger.pythonanywhere.com/login', {
         method: "POST",
         body: formData,
         credentials: 'include',

@@ -22,7 +22,7 @@ document.querySelector('#formArticulo').addEventListener('submit', (e)=>{
     const formData = new FormData(document.getElementById('formArticulo'))
     
 
-    fetch('http://localhost:5000/api/crear-articulo', {
+    fetch('https://deyanger.pythonanywhere.com/api/crear-articulo', {
       method: "POST",
       body: formData,
       credentials: "include",

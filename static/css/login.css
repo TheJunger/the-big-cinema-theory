@@ -36,6 +36,21 @@ body{
 
 .loginbutton{
     margin-top: 5vh;
-    width: 8vw;
-    height: 5vh;
+    padding: 2vh 1vw;
+}
+
+.navbar{
+    display: none;
+}
+
+.footer{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+    .loginbutton{
+        margin-top: 5vh;
+        padding: 2vh 5vw;
+    }
 }

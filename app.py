@@ -10,13 +10,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'yametekudasai'  # Cambia esto a un valor seguro
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
-CORS(app, supports_credentials=True, origins=["http://localhost:3000", "http://127.0.0.1", "http://localhost:5000", "http://127.0.0.1:5000"])
+CORS(app, supports_credentials=True, origins=["http://localhost:3000", "http://127.0.0.1", "http://localhost:5000", "http://127.0.0.1:5000", "https://deyanger.pythonanywhere.com"])
 jwt = JWTManager(app)
 
 app.secret_key = 'yametekudasai'  
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login' 
+login_manager.login_view = 'login'
+
+db_url =  '/home/DeYanger/the-big-cinema-theory/peliculas.db'
 
 app.app_context()
 
@@ -35,7 +37,7 @@ def sitemap():
         pages.append([page[0], page[1]])
 
     # Páginas dinámicas (artículos)
-    conn = sqlite3.connect('./peliculas.db')
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
     cursor.execute("SELECT id_articulo, titulo, fecha_ultima_edicion FROM articulos")
     articles = cursor.fetchall()
@@ -75,7 +77,7 @@ class User(UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     # Buscar el usuario por su ID en la base de datos
-    conn = sqlite3.connect('./peliculas.db')
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
     cursor.execute('SELECT id_autor, alias, password FROM autores WHERE id_autor = ?', (user_id,))
     user_data = cursor.fetchone()
@@ -88,7 +90,7 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
-    conn = sqlite3.connect('./peliculas.db')
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
 
     # Obtener los artículos recientes
@@ -165,7 +167,7 @@ def register():
     password = '1234'
     gmail = 'adminescritor@gmail.com'
     hashed_password = generate_password_hash(password)
-    conn = sqlite3.connect('./peliculas.db')
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
     cursor.execute('INSERT INTO autores (id_autor, alias, nombre_completo, password, email) VALUES (?,?,?,?,?)', (id, alias, nombre, hashed_password, gmail))
     conn.commit()
@@ -181,7 +183,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         print(username, password)
-        conn = sqlite3.connect('./peliculas.db')
+        conn = sqlite3.connect(db_url)
         cursor = conn.cursor()
         cursor.execute('SELECT password FROM autores WHERE alias = ?', (username,))
         userpass = cursor.fetchone()
@@ -200,7 +202,7 @@ def login():
 @app.route("/busqueda")
 def search():
     query = request.args.get('query', '')
-    conn = sqlite3.connect('./peliculas.db')
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
     
     cursor.execute('''
@@ -229,7 +231,7 @@ def search():
 
 @app.route('/articulo/<int:art_id>/<string:slug>') # Añadir tags
 def articulo(art_id,slug):
-    conn = sqlite3.connect('./peliculas.db')
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
     
     cursor.execute('''
@@ -307,7 +309,7 @@ def crear_articulo():
 
         tag_list = [tag.strip() for tag in tags_strings.split(',') if tag.strip()]  # Eliminar espacios y tags vacíos
 
-        conn = sqlite3.connect('./peliculas.db')
+        conn = sqlite3.connect(db_url)
         cursor = conn.cursor()
 
         # Insertar el nuevo artículo
@@ -410,7 +412,7 @@ def perfil(perfil_id):
             print(e)
             print({'message': 'Token inválido o expirado'}), 401
     
-    conn = sqlite3.connect('./peliculas.db')
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
     cursor.execute('''
         SELECT au.id_autor, au.nombre_completo, au.email, au.alias, a.id_articulo, 
@@ -436,7 +438,7 @@ def perfil(perfil_id):
 @app.route('/api/editar-articulo/<int:art_id>', methods=["GET", "POST"]) # Fecha, date time
 def editar_articulo(art_id):
     if request.method == "GET":
-        conn = sqlite3.connect('./peliculas.db')
+        conn = sqlite3.connect(db_url)
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM articulos WHERE id_articulo = ?', (art_id,))
         articulo_data = cursor.fetchone()
@@ -447,7 +449,7 @@ def editar_articulo(art_id):
             articulo = dict(zip(columns, articulo_data)) 
             
             # Obtener tags del artículo
-            conn = sqlite3.connect('./peliculas.db')
+            conn = sqlite3.connect(db_url)
             cursor = conn.cursor()
             cursor.execute('''
                 SELECT t.nombre 
@@ -481,7 +483,7 @@ def editar_articulo(art_id):
         tags_strings = request.form['tags']
         tag_list = [tag.strip() for tag in tags_strings.split(',') if tag.strip()]  # Eliminar espacios y tags vacíos
 
-        conn = sqlite3.connect('./peliculas.db')
+        conn = sqlite3.connect(db_url)
         cursor = conn.cursor()
 
         # Actualizar el artículo
@@ -522,7 +524,7 @@ def eliminar_articulo(art_id):
     except Exception as e:
         return jsonify({'message': 'Token inválido o expirado'}), 401
     
-    conn = sqlite3.connect('./peliculas.db')
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
     
     try:
