@@ -1,0 +1,278 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    filter: grayscale(100%);
+}
+
+.container {
+    background-color: #ddd;
+}
+
+.trending {
+    margin: 4vh 8vw;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #222;
+    color: #fff;
+    text-shadow: 
+        -2px -2px 0 black,  
+        2px -2px 0 black,
+        -2px 2px 0 black,
+        2px 2px 0 black;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 450px;
+}
+
+.articulodestacado {
+    width: 60%;
+    position: relative;
+    border-right: 2px solid #222;
+}
+
+.articulodestacadoimagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.titulodestacado {
+    position: absolute;
+    bottom: 15px;
+    font-weight: bold;
+    left: 10px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+    color: #fff;
+    font-size: xx-large;
+}
+
+/* Subarticulos combinados */
+.subarticulos {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%; /* Forzamos que ocupe el 100% del contenedor padre */
+}
+
+.subarticulo {
+    width: 100%;
+    position: relative;
+    flex: 1;
+    flex-shrink: 1;
+    height: 50%; /* Altura ajustada */
+    display: flex;
+}
+
+.samain{
+    border-bottom: 2px solid #222; /* Unificación del border */
+}
+
+.subarticulo a {
+    width: 100%;
+}
+
+.subarticuloimagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.subarticulotitulo {
+    position: absolute;
+    bottom: 15px;
+    font-weight: bold;
+    left: 10px;
+    color: #fff;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    width: 90%;
+}
+
+.mainContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.listadearticulos {
+    padding: 1vh 1vw;
+    flex-grow: 1;
+    width: 72.5%;
+}
+
+.listadearticulostitulo {
+    margin: 5vh 0;
+}
+
+.articulolista {
+    padding: 2vh 1vw;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 125px;
+    border: 1px solid #222;
+    background-color: #fff;
+    margin: 5px 0;
+    position: relative;
+    color: #111;
+    text-decoration: none;
+}
+
+.articulolistainfo {
+    width: 100%;
+    position: relative;
+}
+
+.articulolistatitulo {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    width: 75%;
+}
+
+.articulolistaimagen {
+    width: 15%;
+    height: 100%;
+    box-sizing: border-box;
+    margin-right: 5%;
+    border: 1px solid #222;
+}
+
+
+/* General */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    filter: grayscale(100%);
+}
+
+.container {
+    background-color: #ddd;
+}
+
+.tagcontainer{
+    margin-top: 2vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags{
+    margin-top: 5px;
+    margin-right: 15px;
+    border: 1px solid #111;
+    padding: 1vh 1vw;
+    border-radius: 1vh;
+    background-color: #ccc;
+}
+
+/* Ajustes para móviles */
+@media screen and (max-width: 768px) {
+
+    .trending {
+        flex-direction: column;
+        height: auto;
+        margin: 2vh;
+        margin-top: 5vh;
+    }
+
+    .articulodestacado {
+        width: 100%;
+        border-right: none;
+    }
+
+    .articulodestacado a{
+        display: block;
+        height: 450px;
+        border-bottom: 1px solid #222;
+    }
+
+    .articulodestacadoimagen {
+        object-fit: fill;
+        height: 450px;
+
+    }
+
+    .subarticulos {
+        width: 100%;
+        height: auto;
+    }
+
+    .subarticulo {
+        height: auto;
+    }
+
+    .mainContent {
+        flex-direction: column;
+    }
+
+    .thing.leftThing, .thing.rightThing { /*Publicidad cambiar despues*/
+        display: none;
+    }
+
+    .listadearticulos {
+        width: 100%;
+    }
+
+    .articulolista {
+        flex-direction: column;
+        height: auto;
+        padding-top: 1vh; 
+    }
+
+    .articulolistaimagen {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 1rem;
+        margin-right: 0;
+        border-radius: 1vh;
+    }
+
+    .articulolistainfo{
+        margin-left: 5%;
+    }
+
+    .articulolistatitulo {
+        width: 100%;
+    }
+
+    .tags{
+        padding: 1vh 3vw;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+
+    .trending{
+        margin-top: 3vh;
+    }
+
+    .subarticulos{
+        display: none;
+    }
+
+    .listadearticulos{
+        padding: 0 5vw;
+    }
+
+    .articulolista{
+        margin-bottom: 3vh;
+    }
+}

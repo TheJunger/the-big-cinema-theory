@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh; /* Ocupa al menos la altura de la pantalla */
+}
+
+.searchcontainer {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1; /* Permite que crezca y llene el espacio restante */
+    margin-top: 2vh;
+}
+
+.maincontentsearch {
+    width: 72%;
+    padding: 0 2vw;
+}
+
+.result {
+    height: 125px;
+    width: 100%;
+    display: flex;
+    margin: 5px 0;
+    border: 1px solid #222;
+    background-color: #fff;
+    color: #111;
+}
+
+.resultnombre {
+    width: 90%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.resultimagen {
+    width: 125px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1vh;
+}
+
+.resultinfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.maincontentsearch a {
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    text-align: center;
+    flex-shrink: 0; /* Asegura que el footer no se reduzca */
+}
+
+.tagcontainer{
+    margin-top: 2vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags{
+    margin-top: 5px;
+    margin-right: 15px;
+    border: 1px solid #111;
+    padding: 1vh 1vw;
+    border-radius: 1vh;
+    background-color: #ccc;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .thing{
+        display: none;
+    }
+
+    .maincontentsearch{
+        width: 100%;
+    }
+
+}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}The Big Cinema Theory - Iniciar Sesion{% endblock %}
+
+{% block metatags %}
+    <meta property="og:title" content="Iniciar Sesión - The Big Cinema Theory">
+    <meta property="og:description" content="Inicia sesión para acceder a tu perfil y a tus artículos.">
+{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form id="loginForm" method="POST">
+            <div class="logintitle">Iniciar Sesion</div>
+            <input class="logininput" name="username" type="text" placeholder="Nombre de usuario">
+            <input class="logininput" name="password" type="password" placeholder="Contraseña">
+            <button class="loginbutton" type="submit">Iniciar Sesion</button>
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock%}

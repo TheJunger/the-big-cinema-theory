@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Contactanos - The Big Cinema Theory{% endblock %}
+
+{% block metatags %}
+    <meta property="og:title" content="Contáctanos - The Big Cinema Theory">
+    <meta property="og:description" content="Ponte en contacto con nosotros para cualquier consulta o comentario.">
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+{% endblock %}
+
+{% block content %}
+        <section class="contactcontainer">
+            <aside class="thing leftThing"></aside>
+            <article class="contact">
+                <h1 class="contacttitle">Contactanos</h1>
+                <form id="contact-form" class="contactform" action="" method="POST">
+                    <div class="namecontactform">
+                        <label for="nombre">Tu Nombre:</label>
+                        <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="emailcontactform">
+                        <label for="email">Gmail:</label>
+                        <input type="email" name="email" placeholder="Tu correo" required>
+                    </div>
+                    <div class="motivocontactform">
+                        <label for="mensaje">Escribe tu mensaje:</label>
+                        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                    </div>
+                    <button class="submitbuttoncontact" type="submit">Enviar</button>
+                </form>
+            </article>
+            <div class="thing rightThing"></div>
+        </section>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/contactanos.js') }}"></script>
+{% endblock %}

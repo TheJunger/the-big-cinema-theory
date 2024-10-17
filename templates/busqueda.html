@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Resultado de la busqueda "{{query}}"{% endblock %}
+
+{% block metatags %}
+    <meta property="og:title" content="Resultados de Búsqueda - The Big Cinema Theory">
+    <meta property="og:description" content="Resultados de búsqueda para '{{ query }}'.">
+{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/busqueda.css') }}">
+{% endblock %}
+
+{% block content %}
+        <section class="searchcontainer">
+            <aside class="thing leftThing"></aside>
+
+            <section class="maincontentsearch">
+                <h2 class="titlesearch">Resultados de la busqueda: {{ query }}</h2>
+                <div class="resultssearch">
+                    {% if articulos %}
+                    {% for articulo in articulos%}
+                    <a href="{{ url_for('articulo', art_id=articulo['ID'], slug=articulo['Titulo']|replace(' ', '-')|lower()) }}" target="_blank" class="asearch">
+                        <article class="result">
+                            <img src="{{articulo['Url_Imagen']}}" alt="" srcset="" class="resultimagen">
+                            <div class="resultinfo">
+                                <h3 class="resultnombre">{{ articulo['Titulo']}}</h3>
+                                <time class="resultfecha">{{articulo['Fecha_Creacion']}}</time>
+                                {% if articulo['Fecha_Ultima_Edicion'] %}
+                                <time class="resultfecha">{{articulo['Fecha_Ultima_Edicion']}}</time>
+                                {% endif %}
+                                <div class="tagcontainer">
+                                    {% for tag in articulo['Tags'] %}
+                                    <p class="tags">{{tag}}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                    {% endfor %}
+                    {% else %}
+                    <p class="noresults">No se encontraron resultados para "{{ query }}"</p>
+                    {% endif %}
+
+                </div>
+            </section>
+
+            <aside class="thing rightThing"></aside>
+        </section>
+{% endblock %}

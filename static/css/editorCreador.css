@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.containereditor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2vh 2vw;
+    
+}
+
+#formArticulo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#formArticulo section{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+#formArticulo section input{
+    width: 50%;
+    padding: 5px 0;
+    font-size: medium;
+    margin-top: 5px;
+}
+
+#formArticulo section label{
+    font-size: large;
+    font-weight: lighter;
+}
+
+.botonescreador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row !important;
+}
+
+.botonescreador button{
+    width: 130px;
+    margin: 0 1vw;
+    height: 40px;
+    font-weight: bold;
+}
+
+.cancelButton{
+    background-color: salmon;
+}
+
+.cancelButton:hover{
+    background-color: rgb(207, 99, 86);
+}
+
+.cancelButton a{
+    color: #111;
+    text-decoration: none;
+}
+
+.selectdestacar{
+    width: 50%;
+    padding: 5px 0;
+    font-size: medium;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .selectdestacar{
+        width: 75%;
+    }
+
+    
+    #formArticulo section input{
+    width: 75%;
+
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .selectdestacar{
+        width: 100%;
+    }
+
+    
+    #formArticulo section input{
+        width: 100%;
+    }
+
+}

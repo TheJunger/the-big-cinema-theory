@@ -1,0 +1,22 @@
+# Bloquea el acceso a todas las API (excepto si quieres que algunas sean rastreables)
+User-agent: *
+Disallow: /api/
+
+# Bloquea el acceso a la ruta de inicio de sesión
+Disallow: /login
+
+# Bloquea el acceso a las áreas de administración o gestión de usuarios
+Disallow: /perfil
+Disallow: /register
+Disallow: /api/destacar-articulo
+Disallow: /api/crear-articulo
+Disallow: /api/eliminar-articulo
+
+# Permite el acceso a todo lo demás
+Allow: /
+
+# Bloquea el acceso a las carpetas estáticas si contienen recursos no indexables
+Disallow: /static/
+
+# Bloquea el acceso a la carpeta env-peliculas (entorno virtual de Python)
+Disallow: /env-peliculas/

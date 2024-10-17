@@ -1,0 +1,24 @@
+.termscontainer{
+    display: flex;
+    margin-top: 45px;
+}
+
+.terms{
+    width: 100%;    
+}
+
+.termstitle{
+    margin-bottom: 25px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .thing{
+        display: none;
+    }
+
+    .terms{
+        margin: 0 7vw;
+    }
+
+}

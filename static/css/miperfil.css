@@ -1,0 +1,220 @@
+body{
+    background-color: #ddd;
+}
+
+.profilecont{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 35px;
+    align-items: flex-start; 
+}
+
+.profileinfocont{
+    margin: 2vh;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    border: 1px solid #222;
+    padding-top: 3vh;
+    padding-bottom: 10vh;
+    border-radius: 1vh;
+    background-color: #fff;
+    min-height: 450px;
+}
+
+.guardarinfoperfil{
+    margin-top: 25px;
+}
+
+.profilpphoto{
+    border-radius: 100%;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #222;
+}
+
+.profileusername{
+    margin-top: 25px;
+}
+
+.profilename, .profilebirthdate, .profilemail{
+    margin-top: 15px;
+}
+
+.myarticlesinfo{
+    margin: 2vh;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    border: 1px solid #222;
+    padding-top: 3vh;
+    padding-bottom: 10vh;
+    border-radius: 1vh;
+    background-color: #fff;
+    min-height: 450px;
+}
+
+.listadearticulosperfil{
+    width: 100%;
+}
+
+.profilearticulo{
+    width: 100%;
+    border: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.infoarticulocont{
+    display: flex;
+    box-sizing: border-box;
+    color: #111;
+    text-decoration: none;
+    width: 70%;
+}
+
+.infoarticulos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 25px;
+    width: 100%;
+}
+
+.profilenombrearticulo{
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 75%;
+}
+
+.articuloimagen{
+    width: 150px;
+}
+
+.accionesarticulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.REM, .EDIT, .destacar{
+    margin: 0 1vw;
+}
+
+.comprobarUsuario{
+    cursor: default;
+}
+
+
+.accionesarticulo{
+    display: none;
+}
+
+.icon{
+    border: 1px solid #111;
+    border-radius: 1vh;
+    background-color: #ccc;
+    padding: 1vh 1vw;
+    cursor: pointer;
+}
+
+.EDIT a{
+    color: #111;
+    text-decoration: none;
+}
+
+.destacaricon{
+    color: rgb(177, 137, 38);
+}
+
+.remicon{
+    color: red;
+}
+
+@media screen and (max-width: 768px) {
+
+    .profilecont{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profileinfocont{
+        display: flex;
+        width: 80%;
+        margin: 0;
+        padding: 8vh 1vw;
+    }
+
+    .myarticlesinfo{
+        width: 80%;
+        padding: 0 1vw;
+    }
+
+    .profilearticulo{
+        margin: 2vh 0;
+    }
+
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+
+    .profilpphoto{
+        width: 200px;
+        height: 200px;
+    }
+
+    .profileinfocont{
+        min-height: 0;
+    }
+
+    .articuloimagen{
+        width: 100px;
+    }
+
+    .profilearticulo{
+        display: flex;
+        flex-direction: column;
+        border-radius: 1vh;
+    }
+
+    .accionesarticulo{
+        margin-top: 4vh;
+        padding-bottom: 2vh;
+        justify-content: space-evenly;
+    }
+
+    .infoarticulos{
+        text-align: left;
+    }
+
+    .profilenombrearticulo{
+        width: 90%;
+    }
+
+    .myarticlesinfo{
+        padding: 0 2vw;
+    }
+
+    .icon{
+        border: 1px solid #111;
+        border-radius: 1vh;
+        background-color: #ccc;
+        padding: 1vh 5vw;
+    }
+
+}

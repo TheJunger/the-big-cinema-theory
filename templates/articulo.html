@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}{{ articulo['Titulo'] }} - The Big Cinema Theory{% endblock %}
+
+{% block metatags %}
+{% block metatags %}
+    <meta property="og:title" content="{{ articulo['Titulo'] }} - Críticas y reseñas de Películas">
+    <meta property="og:description" content="{{ articulo['Descripción'] }}">
+    <meta property="og:image" content="{{articulo['Url_Imagen']}}">
+    <meta property="og:url" content="{{url_for('articulo', art_id=articulo['ID_Articulo'], slug=articulo['Titulo']|replace(' ', '-')|lower())}}">
+{% endblock %}
+
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/articulo.css') }}">
+{% endblock %}
+
+{% block content %}
+         <!-- Main content -->
+        <section class="content">
+            <aside class="thing leftThing"></aside>
+
+            <!-- Article section -->
+            <article class="article">
+                <figure>
+                    <img src="{{articulo['Url_Imagen']}}" alt="{{ articulo['Titulo'] }}" class="articleImage">
+                    <figcaption class="mainimagedesc">{{ articulo['Titulo'] }}</figcaption>
+                </figure>
+                <section class="articleContent">
+                    <h1 class="titleArticle">{{articulo['Titulo']}}</h1>
+                    <p class="authorArticle">Escrito por: {{articulo['Autor']}}</p>
+                    <div class="textoArticulo">
+                        {{articulo['Contenido_HTML']|safe}} 
+                </div>
+                </section>
+            </article>
+
+            <!-- Related articles -->
+            <section class="seguirleyendo">
+                <h2 class="titlesl">Relacionados</h2>
+                <section class="keepreadingcont">
+                    {% for relacionado in relacionados %}
+                    <article class="slartc art{{loop.index}}">
+                        <a class="slartca" href="{{ url_for('articulo', art_id=relacionado['ID'], slug=relacionado['Titulo']|replace(' ', '-')|lower()) }}">
+                            <img src="{{relacionado['Nombre_Imagen']}}" alt="" srcset="" class="imagensl">
+                            <h3 class="nombresl">{{relacionado['Titulo']}}</h3>
+                        </a>
+                    </article>
+    
+                    {% endfor %}
+                </section>
+            </section>
+            <aside class="thing rightThing"></aside>
+        </section>
+
+{% endblock %}
+</body>
+</html>

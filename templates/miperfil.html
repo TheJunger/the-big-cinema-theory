@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Perfil de {{ autor['Alias'] }}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/miperfil.css') }}">
+{% endblock %}
+
+{% block metatags %}
+    <meta property="og:title" content="Mi Perfil - The Big Cinema Theory">
+    <meta property="og:description" content="Accede a tu perfil y gestiona tus artículos y preferencias.">
+{% endblock %}
+
+
+{% block content %}
+        <section class="profilecont">
+            <div class="profileinfocont">
+                <figure>
+                    <img src="{{ url_for('static', filename='images/imagentest.jpg') }}" alt="Foto de perfil de {{ autor['Alias'] }}" class="profilpphoto">
+                    <figcaption class="comprobarUsuario">@{{ autor['Alias'] }}</figcaption>
+                </figure>
+                <div class="profilename">
+                    <h2>Nombre:</h2>
+                    <p>{{ autor['Nombre_Completo'] }}</p>
+                </div>
+                <div class="profilemail">
+                    <h2>Gmail:</h2>
+                    <p>{{ autor['Email']}}</p>
+                </div>
+            </div>
+    
+            <section class="myarticlesinfo">
+                <div class="listadearticulosperfil">
+                    {% if articulos %}
+                    {% for articulo in articulos %}
+                    {% if articulo['ID_Articulo']%}
+                    
+                        <article class="profilearticulo">
+                            <input type="hidden" name="art_id" value="{{ articulo['ID_Articulo'] }}">
+                            <a class="infoarticulocont" href="{{ url_for('articulo', art_id=articulo['ID_Articulo'], slug=articulo['Titulo']|replace(' ', '-')|lower()) }}" target="_blank">
+                                <img src="{{articulo['URL_Imagen']}}" alt="" srcset="" class="articuloimagen">
+                                <div class="infoarticulos">
+                                    <h3 class="profilenombrearticulo">{{ articulo['Titulo']}}</h3>
+                                    <time class="profilefechaarticulo">{{articulo['Fecha_Creacion']}}</time>
+                                    {% if articulo.Fecha_Ultima_Edicion is not none %}
+                                    <time class="profileedicionarticulo">{{articulo['Fecha_Ultima_Edicion']}}</time>
+                                    {% else %}
+                                    <div></div>
+                                    {% endif %}
+                                </div>
+                            </a>
+                            <div class="accionesarticulo">
+                                <div class="destacar" data-art-id="{{ articulo['ID_Articulo'] }}"><i class="fa-solid fa-star destacaricon icon"></i></div>
+                                <div class="delete-btn" data-art-id="{{ articulo['ID_Articulo'] }}"><i class="fa-solid fa-trash remicon icon"></i></div>
+                                <div class="EDIT">
+                                    <a href="{{ url_for('editar_articulo', art_id=articulo['ID_Articulo']) }}"><i class="fa-solid fa-pen editicon icon"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </article>
+                    
+                    {% else %}
+                    <div>Aun no hay articulos...</div>
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <div>Aun no hay articulos...</div>
+                    {% endif %}
+                </div>
+            </section>
+        </section>
+{% endblock %}
+    
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/miperfil.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/remover.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/destacar.js') }}"></script>
+{% endblock %}

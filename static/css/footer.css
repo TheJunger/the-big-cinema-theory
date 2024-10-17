@@ -1,0 +1,38 @@
+
+.footer {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 2vh 0vw;
+    background-color: #fff;
+    border-top: 1px solid #111;
+    padding-bottom: 3vh;
+    flex-shrink: 0; /* Hace que el footer se mantenga al final */
+}
+
+.upfooter nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+.upfooter nav ul li a{
+    color: #111;
+}
+
+.upfooter nav ul li {
+    width: 200px;
+    padding: 1vh 0;
+}
+
+.downfooter{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block metatags %}
+    <meta property="og:title" content="Crear Artículo - The Big Cinema Theory">
+    <meta property="og:description" content="Escribe tu propia crítica de cine y compártela con el mundo.">
+{% endblock %}
+
+
+{% block title %}Crear nuevo articulo{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editorCreador.css') }}">
+    <script src="https://cdn.tiny.cloud/1/ei113tjilgdz02umgjgd2peytrtisf5jixodzkgerq83dd6o/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+{% endblock %}
+
+{% block content %}
+            <article class="containereditor">
+                <header>
+                    <h1>Creando nuevo articulo</h1>
+                </header>
+                <form id="formArticulo" method="post">
+                    <section class="titulocont">
+                        <label for="title" class="titulosave">Titulo del articulo</label>
+                        <input type="text" placeholder="Titulo del articulo" name="title">
+                    </section>
+                    <section class="autorcont">
+                        <label for="author" class="autorsave">Nombre del autor</label>
+                        <input type="text" placeholder="Autor" name="author" disabled>
+                    </section>
+                    <section class="imagencont">
+                        <label for="image" class="imagensave">Imagen de portada del articulo</label>
+                        <input type="text" required name="url_image">
+                    </section>
+                    <section class="figmaimagecont">
+                        <label for="figma" class="figmaimagetitle">Breve descripcion de la imagen</label>
+                        <input type="text" placeholder="Figma" name="figma_image">
+                    </section>
+                    <section class="tagscont">
+                        <label for="tags" class="imagensave">Tags (SEPARADOS POR COMAS)</label>
+                        <input type="text" placeholder="tags" name="tags" >
+                    </section>
+                    <section class="destacarcont">
+                        <label for="destacar" class="figmaimagetitle">Destacar articulo en inicio</label>
+                        <select name="destacado" class="selectdestacar">
+                            <option value="0">No Destacar</option>
+                            <option value="1">Destacar</option>
+                        </select>
+                    </section>
+                    <section>
+                        <label for="editor">Contenido del articulo</label>
+                        <textarea id="editor" name="content_html">Hola mundo</textarea>
+                    </section>
+                    <section class="botonescreador">
+                        <button type="button" class="cancelButton"><a href="{{url_for('home')}}">Cancelar</a></button>
+                        <button type="submit" id="saveButton">Crear Artículo</button>
+                    </section>
+                </form>
+            </article>
+{% endblock %}
+
+{% block scripts%}
+<script src="{{ url_for('static', filename='js/creador.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}The Big Cinema Theory - Inicio{% endblock %}
+
+{% block metatags %}
+    <meta property="og:title" content="Inicio - The Big Cinema Theory">
+    <meta property="og:description" content="Bienvenido a The Big Cinema Theory. Aquí encontrarás críticas de las últimas películas.">
+    <meta property="og:image" content="{{url_for('static', filename='images/LOGO.png')}}">
+    <meta property="og:url" content="{{url_for('home')}}">
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+            <section class="trending">
+                {% if articulos_destacados is not none %}
+                <article class="articulodestacado">
+                    <a href="{{url_for('articulo', art_id=articulos_destacados[0]['ID_Articulo'], slug=articulos_destacados[0]['Titulo']|replace(' ', '-')|lower())}}">
+                        <img src="{{articulos_destacados[0]['Url_Image']}}" alt="" srcset="" class="articulodestacadoimagen">
+                        <h1 class="titulodestacado">{{articulos_destacados[0]["Titulo"]}}</h1>
+                    </a>
+                </article>
+                {% else %}
+                <article class="articulodestacado">
+                    <img src="{{url_for('static', filename='images/LOGO.png')}}" alt="" srcset="" class="articulodestacadoimagen">
+                    <h1 class="titulodestacado">No hay nada para destacar</h1>
+                </article>
+                {% endif %}
+    
+                {% if articulos_destacados|length > 2 %}
+                <div class="subarticulos">
+                    <article class="subarticulo samain">
+                        <a href="{{url_for('articulo', art_id=articulos_destacados[1]['ID_Articulo'], slug=articulos_destacados[1]['Titulo']|replace(' ', '-')|lower())}}">
+                            <img src="{{articulos_destacados[1]['Url_Image']}}" alt="" srcset="" class="subarticuloimagen">
+                            <h2 class="subarticulotitulo">{{articulos_destacados[1]["Titulo"]}}</h2>
+                        </a>
+                    </article>
+                    <article class="subarticulo">
+                        <a href="{{url_for('articulo', art_id=articulos_destacados[2]['ID_Articulo'], slug=articulos_destacados[2]['Titulo']|replace(' ', '-')|lower())}}">
+                            <img src="{{articulos_destacados[2]['Url_Image']}}" alt="" srcset="" class="subarticuloimagen">
+                            <h2 class="subarticulotitulo">{{articulos_destacados[2]["Titulo"]}}</h2>
+                        </a>
+                    </article>
+                </div>
+                {% else %}
+                <div class="subarticulos">
+                    <article class="subarticulo samain">
+                        <img src="{{url_for('static', filename='images/LOGO.png')}}" alt="" srcset="" class="subarticuloimagen">
+                        <h2 class="subarticulotitulo">No hay nada para destacar</h2>
+                    </article>
+                    <article class="subarticulo">
+                        <img src="{{url_for('static', filename='images/LOGO.png')}}" alt="" srcset="" class="subarticuloimagen">
+                        <h2 class="subarticulotitulo">No hay nada para destacar</h2>
+                    </article>
+                </div>
+                {% endif %}
+            </section>
+            
+            <section class="mainContent">
+                <aside class="thing leftThing"></aside>
+    
+                <section class="listadearticulos">
+                    <h2 class="listadearticulostitulo">
+                        Últimos Añadidos
+                    </h2>
+                    {% for articulo in articulos_recientes %}
+                    <article>
+                        <a href="{{ url_for('articulo', art_id=articulo['ID_Articulo'], slug=articulo['Titulo']|replace(' ', '-')|lower()) }}" class="articulolista">
+                            <img src="{{articulo['Url_Image']}}" alt="" srcset="" class="articulolistaimagen">
+                            <div class="articulolistainfo">
+                                <h3 class="articulolistatitulo">{{articulo['Titulo']}}</h3>
+                                {% if articulo['Fecha_Ultima_Edicion'] is not none %}
+                                <time class="articulolistafecha">{{articulo['Fecha_Ultima_Edicion']}}</time>
+                                {% else %}
+                                <time class="articulolistafecha">{{articulo['Fecha_Creacion']}}</time>
+                                {% endif %}
+                                <div class="tagcontainer">
+                                    {% for tag in articulo['Tags'] %}
+                                    <p class="tags">{{tag}}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    {% endfor %}
+                </section>
+    
+                <div class="thing rightThing"></div>
+    
+            </section>
+{% endblock %}

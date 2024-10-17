@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}The Big Cinema Theory{% endblock %}</title>
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="críticas de películas, reseñas de cine, opiniones de películas">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="Críticas de Películas | The Big Cinema Theory">
+<meta property="og:description" content="Lee las mejores críticas de películas en The Big Cinema Theory.">
+<meta property="og:image" content="{{url_for('static', filename='images/LOGO.png')}}">
+<meta property="og:url" content="{{url_for('home')}}">
+<meta property="og:type" content="article">
+
+    {% block metatags %}
+    {% endblock %}
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    {% block css %}{% endblock %}
+    <script src="https://kit.fontawesome.com/973f4891f1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <header class="navbar">
+            <nav class="navItemsContainer">
+                <div class="navitemleft">
+                    <a href="{{url_for('home')}}">
+                        <img src="{{ url_for('static', filename='images/LOGO.png') }}" alt="Logo" class="navlogo mobilelogo">
+                    </a>
+                    <img src="{{ url_for('static', filename='images/LOGO.png') }}" alt="Logo" class="navlogo">
+                    <a class="nava" href="{{url_for('home')}}"><div class="navItem navCritics">Críticas</div></a>
+                    <a class="nava" href="{{url_for('about_us')}}"><div class="navItem navAboutUs">Sobre Nosotros</div></a>
+                    <a class="nava" href="{{url_for('terminos_y_condiciones')}}"><div class="navItem navLegales">Legales</div></a>
+                </div>
+                <form class="navitemright">
+                    <input type="search" name="query" placeholder="buscar..." class="searchnavitem">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass searchicon"></i></button>
+                </form>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <section class="upfooter">
+                <nav>
+                    <ul>
+                        <li class="aboutusfooter"><a href="{{url_for('about_us')}}">Sobre Nosotros</a></li>
+                        <li class="contactfooter"><a href="{{url_for('contact')}}">Contáctanos</a></li>
+                        <li class="termsycondfooter"><a href="{{url_for('terminos_y_condiciones')}}">Términos y condiciones</a></li>
+                    </ul>
+                </nav>
+            </section>
+            <section class="downfooter">
+                <p>Todos los derechos reservados, ¿estás seguro?</p>
+            </section>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/busqueda.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

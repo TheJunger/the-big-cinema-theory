@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
+.navItemsContainer{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.searchnavitem{
+    padding: 0.5vh;
+    width: 225px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navitemleft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navitemright{
+    display: flex;
+    margin-right: 2vw;
+}
+
+.navCritics, .navAboutUs{
+    border-left: 1px solid #222;
+    padding: 1.5vh 2.5vw;
+}
+
+.navAboutUs, .navLegales{
+    border-right: 1px solid #222;
+    padding: 1.5vh 2.5vw;
+}
+
+.thing {
+    width: 12.5%;
+    min-width: 150px;
+}
+
+.navlogo{
+    filter: none;
+    height: 85px;
+    width: 85px;
+    margin-right: 25px;
+}
+
+.nava{
+    text-decoration: none;
+    color: #111;
+    transition: background-color 0.2s;
+}
+
+.nava:hover{
+    background-color: #aaa;
+}
+
+.mobilelogo{
+    display: none;
+}
+
+.searchicon{
+    width: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navitemleft, .navitemright {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navitemleft a div{
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        padding: 0 1rem ;
+    }
+
+    .navitemright button{
+        height: 40px;
+    }
+
+    .searchnavitem {
+        width: 100%;
+        margin: 0.5rem 0;
+        margin-left: 10px;
+        height: 40px;
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 512px) {
+
+    .navAboutUs{
+        display: none !important;
+    }
+
+    .navCritics{
+        border-right: 1px solid #111;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .navItemsContainer{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .navlogo{
+        display: none;
+    }
+
+    .navitemleft{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .mobilelogo{
+        display: flex;
+        width: 80px;
+    }
+
+    .searchnavitem {
+        width: 100%;
+        margin: 0;
+    }
+
+    .nava{
+        display: none;
+    }
+}    
