@@ -6,7 +6,7 @@
     <meta property="og:title" content="{{ articulo['Titulo'] }} - Críticas y reseñas de Películas">
     <meta property="og:description" content="{{ articulo['Descripción'] }}">
     <meta property="og:image" content="{{articulo['Url_Imagen']}}">
-    <meta property="og:url" content="{{url_for('articulo', art_id=articulo['ID_Articulo'], slug=articulo['Titulo']|replace(' ', '-')|lower())}}">
+    <meta property="og:url" content="{{url_for('articulo', art_id=articulo['ID'], slug=articulo['Titulo']|replace(' ', '-')|lower())}}">
 {% endblock %}
 
 {% block css %}
