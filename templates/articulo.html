@@ -9,8 +9,6 @@
     <meta property="og:url" content="{{url_for('articulo', art_id=articulo['ID_Articulo'], slug=articulo['Titulo']|replace(' ', '-')|lower())}}">
 {% endblock %}
 
-{% endblock %}
-
 {% block css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/articulo.css') }}">
 {% endblock %}
