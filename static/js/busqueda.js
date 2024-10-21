@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
         });
     
         searchInput.addEventListener('keypress', function(e) {
-            e.preventDefault()
             if (e.key === 'Enter') {
+                e.preventDefault()
                 const query = searchInput.value.trim();
                 if (query) {
                     window.location.href = `https://deyanger.pythonanywhere.com/busqueda?query=${encodeURIComponent(query)}`;
