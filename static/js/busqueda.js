@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const searchInput = document.querySelector('.searchnavitem');
         const searchButton = document.querySelector('.searchnavitembutton');
     
-        searchButton.addEventListener('click', ()=> {
+        searchButton.addEventListener('click', (e)=> {
+            e.preventDefault()
             const query = searchInput.value.trim()
             if (query) {
                 alert('click')
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         });
     
         searchInput.addEventListener('keypress', function(e) {
+            e.preventDefault()
             if (e.key === 'Enter') {
                 const query = searchInput.value.trim();
                 if (query) {
